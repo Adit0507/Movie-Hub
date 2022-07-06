@@ -7,7 +7,7 @@ import "./Carousel.css";
 
 const handleDragStart = (e) => e.preventDefault();
 
-const Gallery = ({ id, media_type }) => {
+const Carousel = ({ id, media_type }) => {
   const [credits, setCredits] = useState([]);
 
   const items = credits.map((c) => (
@@ -59,4 +59,4 @@ const Gallery = ({ id, media_type }) => {
   );
 };
 
-export default Gallery;
+export default Carousel;
