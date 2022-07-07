@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Modal } from "@material-ui/core/Modal";
-import { Backdrop } from "@material-ui/core";
-import Fade from "@material-ui/core";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 import axios from "axios";
-import { img_500, unavailable, unavailableLandscape } from "../../config";
+import {
+  img_500,
+  unavailable,
+  unavailableLandscape,
+} from "../../config/config";
 import "./ContentModal.css";
 import { Button } from "@material-ui/core";
-import { YouTube } from "@material-ui/icons";
+import YouTube from "@material-ui/icons/YouTube";
 import Carousel from "../Carousel/Carousel";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
     height: "80%",
     backgroundColor: "#39445a",
     border: "1px solid #282c34",
-    borderRadius: 10,
+    borderRadius: 10, 
     color: "white",
-    boxShadow: theme.shadows,
+    boxShadow: theme.shadows[5],
     padding: theme.spacing(1, 1, 3),
   },
 }));
 
-export default function TransitionModal({ children, media_type, id }) {
+export default function TransitionsModal({ children, media_type, id }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState();
@@ -48,11 +52,12 @@ export default function TransitionModal({ children, media_type, id }) {
     );
 
     setContent(data);
+    // console.log(data);
   };
 
   const fetchVideo = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+        `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
 
     setVideo(data.results[0]?.key);
@@ -82,7 +87,9 @@ export default function TransitionModal({ children, media_type, id }) {
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
-        BackdropProps={{ timeout: 500 }}
+        BackdropProps={{
+          timeout: 500,
+        }}
       >
         <Fade in={open}>
           {content && (
@@ -95,7 +102,7 @@ export default function TransitionModal({ children, media_type, id }) {
                       : unavailable
                   }
                   alt={content.name || content.title}
-                  className="ContentModal_portrait"
+                  className="ContentModal__portrait"
                 />
                 <img
                   src={
@@ -104,7 +111,7 @@ export default function TransitionModal({ children, media_type, id }) {
                       : unavailableLandscape
                   }
                   alt={content.name || content.title}
-                  className="ContentModal__Landscape"
+                  className="ContentModal__landscape"
                 />
                 <div className="ContentModal__about">
                   <span className="ContentModal__title">
@@ -132,10 +139,10 @@ export default function TransitionModal({ children, media_type, id }) {
                     variant="contained"
                     startIcon={<YouTube />}
                     color="secondary"
-                    target="_blank"
+                    target="__blank"
                     href={`https://www.youtube.com/watch?v=${video}`}
                   >
-                    Watch the trailer 😉
+                    Watch the Trailer
                   </Button>
                 </div>
               </div>
