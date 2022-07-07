@@ -142,7 +142,7 @@ export default function TransitionsModal({ children, media_type, id }) {
                     target="__blank"
                     href={`https://www.youtube.com/watch?v=${video}`}
                   >
-                    Watch the Trailer
+                    Watch the Trailer 😉
                   </Button>
                 </div>
               </div>
