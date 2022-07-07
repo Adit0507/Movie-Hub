@@ -104,7 +104,7 @@ export default function TransitionModal({ children, media_type, id }) {
                       : unavailableLandscape
                   }
                   alt={content.name || content.title}
-                  className="ContentModal_Landscape"
+                  className="ContentModal__Landscape"
                 />
                 <div className="ContentModal__about">
                   <span className="ContentModal__title">
