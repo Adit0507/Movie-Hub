@@ -1,1 +1,1 @@
-# Movie Search App
+# Movie Hub
